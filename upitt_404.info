@@ -1,0 +1,7 @@
+name = University of Pittsburgh 404 page handler
+description = To provide more helpful information when a user lands on a 404 page.
+package = Islandora Tools
+version = 7.x-1.6
+core = 7.x
+dependencies[] = islandora
+dependencies[] = islandora_solr

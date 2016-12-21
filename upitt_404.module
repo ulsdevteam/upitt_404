@@ -1,0 +1,49 @@
+<?php
+
+function upitt_404_menu() {
+  return array(
+    // the search page handler is configured under Site information | "Error Pages" here admin/config/system/site-information.
+    // it should be configured to point to this menu handler.
+    '404_page' => array(
+      'title' => 'Page not found',
+      'page callback' => array('upitt_404_page'),
+      'type' => MENU_CALLBACK,
+      'file' => 'includes/upitt_404.page.inc',
+      'access arguments' => array(ISLANDORA_MANAGE_PROPERTIES),
+    ),
+  );
+}
+
+/**
+ * Implements hook_preprocess_theme().
+ *
+ * This code will remove the sidebar for the 404 page.
+ */
+function upitt_404_preprocess_page(&$variables) {
+  $item = menu_get_item();
+  if (is_array($item)) {
+    if ($item['href'] == '404_page') {
+      // remove sidebar for /user page in case it is there
+      $variables['page']['sidebar'] = array();
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function upitt_404_theme() {
+  return array(
+    // to remove duplicate pager and display_links
+    'upitt_404_page' => array(
+      'template' => 'theme/upitt-404-page',
+      'variables' => array(
+        'title' => '',
+        'refer_help' => '',
+        'target_help' => '',
+        'GET_help' => '',
+        'POST_help' => '',
+      ),
+    ),
+  );
+}

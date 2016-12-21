@@ -9,7 +9,7 @@ function upitt_404_menu() {
       'page callback' => array('upitt_404_page'),
       'type' => MENU_CALLBACK,
       'file' => 'includes/upitt_404.page.inc',
-      'access arguments' => array(ISLANDORA_MANAGE_PROPERTIES),
+      'access arguments' => array(ISLANDORA_VIEW_OBJECTS),
     ),
   );
 }

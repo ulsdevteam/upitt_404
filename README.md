@@ -14,7 +14,19 @@ via the Admin | UPitt 404 | Report.
 
 ### Helpful info
 The info is broken down into four main groups.
-####'refer_help'
-####'target_help'
-####'GET_help'
-####'POST_help'
+#### 'refer_help'
+Info may come from the referer url (where the user came from).  Depending on where the link to this page was, it may be possible
+to provide some additional help in those cases.  This inspects the value of `$_SERVER['HTTP_REFERER']`.
+> pending development
+
+#### 'target_help'
+Info comes from the target url destination.  Many times this will be blank, but there may be cases where some info could be provided.  This will inspect the value of `$_GET['destination']` since that is passed to the 404 handler by the drupal code and this module code.
+> pending development
+
+#### 'GET_help'
+Info comes from the target url destination, but only looks at the query string that is at the end of the URL.  This also inspects the use the values in $_GET they may be at the end of the `$_GET['destination']` url as a query string.
+> pending development
+
+#### 'POST_help'
+Info comes from $_POST variables from the intended page.  This may not be able to provide any help.
+> pending development
